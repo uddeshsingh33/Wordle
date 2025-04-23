@@ -1,0 +1,230 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 78vh;
+  padding-top: 30px;
+  margin: 0;
+  background-color: #121213;
+  font-family: 'Arial', sans-serif;
+  color: white;
+   position: relative;
+  overflow-y: hidden;
+}
+
+.container {
+  justify-content: center;
+  position: absolute;
+  display: block;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+
+.tile {
+  width: 50px;
+  height: 50px;
+  background-color: #3a3a3c;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: text;
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d; /* Ensure 3D transformations work */
+  transition: transform 0.5s ease;
+  margin: 2.5px;
+}
+.tile.flipped {
+  transform: rotateY(180deg); /* Flip the tile */
+}
+.tile .front, .tile .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back when flipped */
+}
+.tile .front {
+  background-color: #3a3a3c;
+  color: white;
+}
+
+.tile .back {
+  background-color: #538d4e; /* Green when guessed correctly */
+  color: white;
+  transform: rotateY(180deg); /* Flip the back side to be hidden initially */
+}
+
+/* Active flip effect on correct guess */
+.tile.green .back {
+  background-color: #538d4e; /* Green for correct guess */
+}
+
+.tile.yellow .back {
+  background-color: #b59f3b; /* Yellow for close but incorrect guess */
+}
+
+.tile.gray .back {
+  background-color: #3a3a3c; /* Gray for incorrect guess */
+}
+.tile:focus {
+  border: 2px solid #ffffff;
+}
+/* Virtual keyboard color coding */
+.key.green {
+  background-color: #538d4e;
+}
+
+.key.yellow {
+  background-color: #b59f3b;
+}
+
+.key.gray {
+  background-color: #3a3a3c;
+}
+
+.green {
+  background-color: #538d4e;
+}
+
+.yellow {
+  background-color: #b59f3b;
+}
+
+.gray {
+  background-color: #3a3a3c;
+}
+
+#message {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+h1 {
+  color: antiquewhite;
+  margin-top: 18px;
+  position: absolute;
+  display: inline;
+  font-size: 35px;
+  margin-left: 8px;
+  display: block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.heading {
+  display: flex;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.navbar {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 14px 15px;
+  text-decoration: none;
+  color: antiquewhite;
+  font-size: 18px;
+}
+
+.navbar ul li a:hover {
+  background-color: #575757;
+  border-radius: 5px;
+}
+
+.navbar .left {
+  margin-right: auto;
+}
+
+.navbar .right {
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+}
+
+.navbar .right a {
+  text-decoration: none;
+}
+
+.keyboard {
+  position: absolute;
+  display: inline-block;
+  margin-top: 680px;
+  margin-right: auto;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  transform: translateX(-50%);
+  margin-left: 520px;
+}
+
+.key {
+  background-color: #818384;
+  color: #f8f8f8;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  font-family: 'nyt-franklin', Arial, sans-serif;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+.key:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+  background: linear-gradient(145deg, #0f0e0e, #ffffff);
+}
+.key:active {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset 0px 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(2px);
+  background: linear-gradient(145deg, #cccccc, #b3b3b3);
+}
+.key:focus {
+  outline: none; /* Remove the focus outline */
+  box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.8);
+}
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.key-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.key.wide {
+  width: 120px; /* Make wide keys like Enter and Backspace bigger */
+}
+.tile-container {
+  perspective: 1000px; /* Give a 3D perspective */
+}
