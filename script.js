@@ -1,7 +1,7 @@
 const board = document.getElementById("board");
 const message = document.getElementById("message");
 
-const words = ["apple", "grape", "prank"];
+const words = ["apple", "grape", "prank","aryan"];
 const targetWord = words[Math.floor(Math.random() * words.length)];
 let attempts = 6;
 let currentRow = 0;
